@@ -16,9 +16,10 @@ class WeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //test gradient
         let gradient = CAGradientLayer()
         gradient.frame = gradientView.bounds
-        gradient.colors = [UIColor.myPurple.cgColor, UIColor.myOrange.cgColor]
+        gradient.colors = [UIColor.myBlue.cgColor, UIColor.myOrange.cgColor]
         gradientView.layer.insertSublayer(gradient, at: 0)
     }
 

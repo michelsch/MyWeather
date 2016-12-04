@@ -16,10 +16,12 @@ func hexStringToUIColor (hex:String) -> UIColor {
     
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
     
+    //remove #, if present
     if (cString.hasPrefix("#")) {
         cString.remove(at: cString.startIndex)
     }
     
+    //check hex color has proper length, otherwise return UIColor gray
     if ((cString.characters.count) != 6) {
         return UIColor.gray
     }
@@ -40,6 +42,6 @@ extension UIColor {
     class var myPurple: UIColor {return hexStringToUIColor(hex: "5A4979")}
     class var myBlue: UIColor {return hexStringToUIColor(hex: "79C2CA")}
     class var myOrange: UIColor {return hexStringToUIColor(hex: "F3BD95")}
-    class var myPink: UIColor {return hexStringToUIColor(hex: "F5ADAD")}
+    class var myPink: UIColor {return hexStringToUIColor(hex: "F2BFBF")}
     
 }
