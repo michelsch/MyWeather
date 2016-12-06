@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
-let BASE_URL = "api.openweathermap.org/data/2.5/weather?"
+let BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
+let LAT = "&lat=37.7"
+let LON = "&lon=-122.4"
 let WEATHER_API_KEY = "c7245aecffd09e2c56db168265da0e14"
+let WEATHER_URL = "\(BASE_URL)appid=\(WEATHER_API_KEY)\(LAT)\(LON)"
+
+typealias DownloadComplete = () -> () 
 
 func hexStringToUIColor (hex:String) -> UIColor {
     

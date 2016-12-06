@@ -14,6 +14,8 @@ class WeatherVC: UIViewController {
 
     @IBOutlet weak var temperatureLabel: UILabel!
     
+    var currentWeather = CurrentWeather()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //test gradient
@@ -21,7 +23,9 @@ class WeatherVC: UIViewController {
         gradient.frame = gradientView.bounds
         gradient.colors = [UIColor.myBlue.cgColor, UIColor.myOrange.cgColor]
         gradientView.layer.insertSublayer(gradient, at: 0)
+        currentWeather.downloadWeather {
+        }
+        
     }
-
 }
 
