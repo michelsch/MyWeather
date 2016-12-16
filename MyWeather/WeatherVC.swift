@@ -18,14 +18,27 @@ class WeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //test gradient
+        currentWeather.downloadWeather {
+            print(currentWeather)
+            updateUI()
+        }
+        
+    }
+    
+    func updateUI() {
+         gradientView.layer.insertSublayer(getGradientColors(), at: 0)
+    }
+    
+    func getGradientColors() -> CAGradientLayer {
+        //get current unix time
+        let current = NSDate().timeIntervalSince1970
+        
+        print(current)
+        print()
         let gradient = CAGradientLayer()
         gradient.frame = gradientView.bounds
         gradient.colors = [UIColor.myBlue.cgColor, UIColor.myOrange.cgColor]
-        gradientView.layer.insertSublayer(gradient, at: 0)
-        currentWeather.downloadWeather {
-        }
-        
+        return gradient
     }
 }
 

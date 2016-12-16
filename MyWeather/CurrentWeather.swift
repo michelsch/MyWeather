@@ -15,10 +15,12 @@ class CurrentWeather {
     
     var _weatherType:String!
     var _currentTemp:Double!
+    var _sunriseTime:TimeInterval!
+    var _sundownTime:TimeInterval!
     
     var weatherType: String {
         if _weatherType == nil {
-            _weatherType = "Error fetching weather type"
+            _weatherType = "Error getting weather type"
         }
         return _weatherType
     }
@@ -30,12 +32,29 @@ class CurrentWeather {
         return _currentTemp
     }
     
+    var sunriseTime: TimeInterval {
+        if _sunriseTime == nil {
+            _sunriseTime = NSDate().timeIntervalSince1970
+        }
+        return _sunriseTime
+    }
+    
+    var sundownTime: TimeInterval {
+        if _sundownTime == nil {
+            _sundownTime = NSDate().timeIntervalSince1970
+        }
+        return _sundownTime
+    }
+    
     func downloadWeather(completed:DownloadComplete) {
         let url = URL(string:WEATHER_URL)!
         Alamofire.request(url).responseJSON { response in
-            let result = response.result
-            print(result)
-            print(response)
+            guard let json = response.result.value as? [String: Any] else {
+                print("didn't get todo object as JSON from API")
+                print("Error: \(response.result.error)")
+                return
+            }
+            //let sys = json as? [String:Any]
         }
         completed()
     }
